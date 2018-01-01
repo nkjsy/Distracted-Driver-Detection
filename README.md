@@ -5,6 +5,8 @@ MLND capstone
 
 训练数据来自kaggle竞赛：https://www.kaggle.com/c/state-farm-distracted-driver-detection/data
 
+代码在distracted_driver_detection.ipynb
+
 我导出的特征向量可以从百度云下载：https://pan.baidu.com/s/1pLQgxsv 
 其中gap为未经数据增强的图片集，gap_aug为图片增强后，增加了一倍图片数量的图片集。
 
