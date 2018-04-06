@@ -5,13 +5,9 @@ MLND capstone
 
 训练数据来自kaggle竞赛：https://www.kaggle.com/c/state-farm-distracted-driver-detection/data
 
-代码在distracted_driver_detection.ipynb
+一共12个模型的代码分别为M1.ipynb到M12.ipynb，其训练结果分别为my_submission1.csv到my_submission12.csv
+另外还有最后用来做模型融合的Merger.ipynb,输出f_submission为多个模型融合后的结果。
 
-我导出的特征向量可以从百度云下载：https://pan.baidu.com/s/1pLQgxsv 
-其中gap为未经数据增强的图片集，gap_aug为图片增强后，增加了一倍图片数量的图片集。
+使用迁移学习方法，在ResNet50，InceptionV3，Xception预训练模型后分别接GAP，dropout和全连接层分类器。训练中采用early stopping，最多5代。在AWS p2.xlarge实例上训练，使用4个worker，每一代训练需要约20分钟。训练得到的模型保存为my_model1.h5到my_model12.h5
 
-以下为在AWS的p2.xlarge实例上运行的时间：
-
-迁移学习方法1：在ResNet50后接自己的全连接层分类器。经过一倍数量的数据增强，训练10代。需要约1小时。训练得到的模型保存为my_model.h5
-
-迁移学习方法2：用ResNet50，VGG16，InceptionV3导出训练图片的特征向量，经过模型融合后，用全连接神经网络分类。导出一次训练图片约10分钟，导出一次测试图片约40分钟。特征向量在本地分类器训练很快，可以忽略。
+最终融合后的模型提交到kaggle上，private score 0.23 排名107。
