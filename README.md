@@ -12,3 +12,5 @@ CAM Analysis.ipynb利用CAM可视化技术展示了一些模型误判的图片�
 使用迁移学习方法，在ResNet50，InceptionV3，Xception，InceptionResNetV2预训练模型后分别接GAP，dropout和全连接层分类器。训练中采用early stopping，最多5代。在AWS p2.xlarge实例上训练，使用4个worker并行，每一代训练需要约30分钟。训练得到的模型保存为my_model1.h5到my_model13.h5，可以在此下载：https://pan.baidu.com/s/1C7sNCXDjbZio_EhQQ-D1tg
 
 最终融合后的模型提交到kaggle上，private score 0.22 排名91。
+
+注：后来降低了VGG的学习率到1e-5，才可以逐渐收敛。在训练较大规模的模型时，需要降低学习率，防止震荡。
